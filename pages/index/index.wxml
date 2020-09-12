@@ -1,0 +1,50 @@
+<view class="intro">
+	<!-- <view>G21为：{{g21}}</view>
+	<view>扣分情况：{{kfqk}}</view>
+	<view>课程加权平均分为：{{jqpjf}}</view>
+	<view>扣分为：{{kf}}</view>
+	<view>加权为：{{jq}}</view>
+	<view>课程学分为：{{kcxf}}</view>
+	<view>实修学分为：{{sxxf}}</view> -->
+
+	<form class="scene" catchsubmit="formSubmit" catchreset="formReset">
+
+		<swiper vertical="true" display-multiple-items="{{16}}" class="scene-template" previous-margin="10rpx" next-margin="10rpx">
+			<swiper-item wx:key="key" wx:for="{{templates}}">
+				<view class="we" name="km">
+					<view class="scene-template-km">科目{{item.key}}</view>
+					<input 
+					class="weui-input-cj" 
+					name="cj{{item.key}}" 
+					type="digit" 
+					cursor-spacing="100rpx"
+					confirm-hold="true" 
+					hold-keyboard="true" 
+					placeholder="成绩" 
+					bindinput="bindKeyInput" 
+					data-index="{{index}}" 
+					data-item="0"
+					focus="{{inputCurson === index + 0.1 ? 'false' : ''}}"
+					/>
+					<input 
+					class="weui-input-xf"
+					name="xf{{item.key}}" 
+					type="digit" 
+					cursor-spacing="50rpx"
+					confirm-hold="true" 
+					hold-keyboard="true" 
+					placeholder="学分" 
+					bindinput="bindKeyInput" 
+					data-index="{{index}}"
+					data-item="1"
+					focus="{{inputCurson === index + 0.2 ? 'false' : ''}}"
+					/>
+				</view>
+			</swiper-item>
+		</swiper>
+		<view class="btn-area">
+			<button style="margin: 20rpx 20rpx" type="primary" formType="submit">计算</button>
+			<button style="margin: 20rpx 20rpx" formType="reset">归零</button>
+		</view>
+	</form>
+</view>
