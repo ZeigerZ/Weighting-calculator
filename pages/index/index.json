@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-   
+    "navBar": "miniprograms-navigation-bar"
   },
   "disableScroll": true
 }

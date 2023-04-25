@@ -1,5 +1,11 @@
+<!--通过npm引入代码块-->
+<navBar title='加权计算器' ext-class='font-weight:bold' background="{{theme === 'dark' ? '#1b1b1b' : '#fff'}}" color="{{theme === 'dark' ? '#D4D5D8' : '#000'}}" back="{{false}}" bindback="handlerGobackClick" bindhome="handlerGohomeClick">
+  <!--使用slot注入自定义导航栏左侧-->
+  <button style="margin-left:3px; width:70px;" slot="left" open-type="feedback" class="leftBar">反馈</button>
+</navBar>
+<view style="height: 8rpx; background-color: {{theme === 'dark' ? '#1b1b1b' : '#fff'}};"></view>
 <view class="intro">
-	<!-- <view>G21为：{{g21}}</view>
+  <!-- <view>G21为：{{g21}}</view>
 	<view>扣分情况：{{kfqk}}</view>
 	<view>课程加权平均分为：{{jqpjf}}</view>
 	<view>扣分为：{{kf}}</view>
@@ -7,44 +13,20 @@
 	<view>课程学分为：{{kcxf}}</view>
 	<view>实修学分为：{{sxxf}}</view> -->
 
-	<form class="scene" catchsubmit="formSubmit" catchreset="formReset">
+  <form class="scene" catchsubmit="formSubmit" catchreset="formReset">
 
-		<swiper vertical="true" display-multiple-items="{{16}}" class="scene-template" previous-margin="10rpx" next-margin="10rpx">
-			<swiper-item wx:key="key" wx:for="{{templates}}">
-				<view class="we" name="km">
-					<view class="scene-template-km">科目{{item.key}}</view>
-					<input 
-					class="weui-input-cj" 
-					name="cj{{item.key}}" 
-					type="digit" 
-					cursor-spacing="100rpx"
-					confirm-hold="true" 
-					hold-keyboard="true" 
-					placeholder="成绩" 
-					bindinput="bindKeyInput" 
-					data-index="{{index}}" 
-					data-item="0"
-					focus="{{inputCurson === index + 0.1 ? 'false' : ''}}"
-					/>
-					<input 
-					class="weui-input-xf"
-					name="xf{{item.key}}" 
-					type="digit" 
-					cursor-spacing="50rpx"
-					confirm-hold="true" 
-					hold-keyboard="true" 
-					placeholder="学分" 
-					bindinput="bindKeyInput" 
-					data-index="{{index}}"
-					data-item="1"
-					focus="{{inputCurson === index + 0.2 ? 'false' : ''}}"
-					/>
-				</view>
-			</swiper-item>
-		</swiper>
-		<view class="btn-area">
-			<button style="margin: 20rpx 20rpx" type="primary" formType="submit">计算</button>
-			<button style="margin: 20rpx 20rpx" formType="reset">归零</button>
-		</view>
-	</form>
+    <swiper vertical="true" display-multiple-items="{{18}}" current="{{current}}" class="scene-template" duration="50" easing-function="linear">
+      <swiper-item wx:key="key" wx:for="{{templates}}">
+        <view class="we" name="km">
+          <view class="scene-template-km">科目{{item.key}}</view>
+          <input class="weui-input-cj" name="cj{{item.key}}" type="digit" confirm-type="next" cursor-spacing="100rpx" placeholder="成绩" bindinput="bindKeyInput" bindconfirm="doNext" data-index="{{index}}" data-item="0" focus="{{inputCurson == index + 0.1 ? true : false}}" />
+          <input class="weui-input-xf" name="xf{{item.key}}" type="digit" confirm-type="next" cursor-spacing="50rpx" placeholder="学分" bindinput="bindKeyInput" bindconfirm="doNext" data-index="{{index}}" data-item="1" focus="{{inputCurson == index + 0.2 ? true : false}}" />
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="btn-area">
+      <button style="margin: 20rpx 20rpx" type="primary" formType="submit">计算</button>
+      <button style="margin: 20rpx 20rpx" formType="reset">归零</button>
+    </view>
+  </form>
 </view>
