@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "navBar": "miniprograms-navigation-bar"
+    "navBar": "miniprograms-navigation-bar",
+    "mp-toptips": "weui-miniprogram/toptips/toptips"
   },
   "disableScroll": true
 }

@@ -14,5 +14,8 @@
   "sitemapLocation": "sitemap.json",
   "darkmode": true,
   "themeLocation": "theme.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "useExtendedLib": {
+    "weui": true
+  }
 }

@@ -15,7 +15,7 @@
 
   <form class="scene" catchsubmit="formSubmit" catchreset="formReset">
 
-    <swiper vertical="true" display-multiple-items="{{18}}" current="{{current}}" class="scene-template" duration="50" easing-function="linear">
+    <swiper vertical="true" display-multiple-items="{{18}}" current="{{current}}" class="scene-template" duration="50" easing-function="linear" bindchange="ChangeCurrent">
       <swiper-item wx:key="key" wx:for="{{templates}}">
         <view class="we" name="km">
           <view class="scene-template-km">科目{{item.key}}</view>
@@ -24,6 +24,9 @@
         </view>
       </swiper-item>
     </swiper>
+
+
+    <mp-toptips msg="{{success}}" type="success" show="{{success}}"  ext-class="tip" delay="3000"></mp-toptips>
     <view class="btn-area">
       <button style="margin: 20rpx 20rpx" type="primary" formType="submit">计算</button>
       <button style="margin: 20rpx 20rpx" formType="reset">归零</button>

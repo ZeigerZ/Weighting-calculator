@@ -10,7 +10,8 @@ Page({
   data: {
     templates: [],
     inputCurson: 0,
-    current: 0
+    current: 0,
+    success: false
   },
 
   onLoad: function () {
@@ -22,7 +23,17 @@ Page({
       this.NewTheme(result.theme);
     });
     //设置表单长度为20
-    this.NewFormLength(20)
+    this.NewFormLength(20);
+  },
+
+  //小贴士（监听当期“Current”）
+  ChangeCurrent(e) {
+    //当前项为2，触发类型为"touch"，templates长度为20时运行
+    if (e.detail.current == 2 && e.detail.source == "touch" && this.data.templates.length == 20) {
+      this.setData({
+        success: '💡默认行数为20行，行数会随输入增加'
+      });
+    }
   },
 
   // 更新自定义导航栏颜色
@@ -48,6 +59,7 @@ Page({
 
   //点击"计算"时运行
   formSubmit(e) {
+
     // console.log('form发生了submit事件，携带数据为：', e.detail.value);
     var value = e.detail.value;
     //获取value里数据的所有键名,组成一个数组
@@ -144,9 +156,9 @@ Page({
       kcxf: '',
       sxxf: ''
     });
-    setTimeout(() => this.setData({
-      inputCurson: -1
-    }), 1000);
+    setTimeout(() => this.setData({ 
+      inputCurson: -1 
+    }), 1000); 
   },
 
   //监听输入事件
@@ -171,13 +183,13 @@ Page({
       var current = index - 2;
       //输入项-2大于等于0时（从第3项开始），增加表单长度，并更新当前swiper项
       if (current >= 0) {
-        this.NewFormLength(index+18);
+        this.NewFormLength(index + 18);
         this.setData({
           current: current
         });
         // console.log(this.data.current)
       };
-      //延时100ms跳转光标，以解决光标位置不对的问题
+      //延时150ms跳转光标，以解决光标位置不对的问题
       setTimeout(() => this.setData({
         inputCurson: zhuangtai
       }), 150);
