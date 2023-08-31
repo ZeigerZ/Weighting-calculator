@@ -6,18 +6,26 @@ var cfg = {
   }
 };
 
+
 Page({
+
   data: {
     templates: [],
     inputCurson: 0,
     current: 0,
-    success: false
+    tips: false
   },
+
 
   onLoad: function () {
     // console.log(wx.getSystemInfoSync().theme)
     //上传当前主题至自定义导航栏
-    this.NewTheme(wx.getSystemInfoSync().theme)
+    //setData耗时测试
+    // this.setUpdatePerformanceListener({withDataPaths: true}, (res) => {
+    //   var times = res.updateEndTimestamp - res.pendingStartTimestamp
+    //   console.log(times,res)
+    // });
+    this.NewTheme(wx.getSystemInfoSync().theme);
     //监听主题变化上传至自定义导航栏
     wx.onThemeChange((result) => {
       this.NewTheme(result.theme);
@@ -26,12 +34,15 @@ Page({
     this.NewFormLength(20);
   },
 
-  //小贴士（监听当期“Current”）
+  
+   
+
+  //小贴士（监听当前“Current”）
   ChangeCurrent(e) {
     //当前项为2，触发类型为"touch"，templates长度为20时运行
     if (e.detail.current == 2 && e.detail.source == "touch" && this.data.templates.length == 20) {
       this.setData({
-        success: '💡默认行数为20行，行数会随输入增加'
+        tips: '💡 默认行数为20行，行数会随输入增加'
       });
     }
   },
@@ -156,9 +167,9 @@ Page({
       kcxf: '',
       sxxf: ''
     });
-    setTimeout(() => this.setData({ 
-      inputCurson: -1 
-    }), 1000); 
+    setTimeout(() => this.setData({
+      inputCurson: -1
+    }), 1000);
   },
 
   //监听输入事件

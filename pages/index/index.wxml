@@ -3,7 +3,6 @@
   <!--使用slot注入自定义导航栏左侧-->
   <button style="margin-left:3px; width:70px;" slot="left" open-type="feedback" class="leftBar">反馈</button>
 </navBar>
-<view style="height: 8rpx; background-color: {{theme === 'dark' ? '#1b1b1b' : '#fff'}};"></view>
 <view class="intro">
   <!-- <view>G21为：{{g21}}</view>
 	<view>扣分情况：{{kfqk}}</view>
@@ -25,8 +24,7 @@
       </swiper-item>
     </swiper>
 
-
-    <mp-toptips msg="{{success}}" type="success" show="{{success}}"  ext-class="tip" delay="3000"></mp-toptips>
+    <mp-toptips msg="{{tips}}" type="success" show="{{tips}}"  ext-class="tip" delay="3000"></mp-toptips>
     <view class="btn-area">
       <button style="margin: 20rpx 20rpx" type="primary" formType="submit">计算</button>
       <button style="margin: 20rpx 20rpx" formType="reset">归零</button>
